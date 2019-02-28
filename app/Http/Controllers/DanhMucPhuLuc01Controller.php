@@ -53,7 +53,7 @@ class DanhMucPhuLuc01Controller extends Controller
         $pl01->donvitinh = $request->DonViTinh;
         $pl01->id_nhom = $request->TenNhom;
         $pl01->save();
-        return Redirect::back()->with('success','Thêm thuộc tính thành công!');
+        return Redirect::back()->with('success','Thêm thành công!');
     }
 
     /**

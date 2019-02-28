@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DanhMucPhuLuc04;
+
 
 class BaoCaoPhuLuc04Controller extends Controller
 {
@@ -13,7 +15,8 @@ class BaoCaoPhuLuc04Controller extends Controller
      */
     public function index()
     {
-        return view('baocaophuluc04');
+        $dmpl04 = DanhMucPhuLuc04::all();
+        return view('baocaophuluc04', compact('dmpl04'));
     }
 
     /**

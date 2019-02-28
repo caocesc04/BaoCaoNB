@@ -18,6 +18,11 @@ class Danhmucphuluc01 extends Migration
             $table->string('tieuthuoctinh');
             $table->integer('id_nhom');
             $table->string('donvitinh');
+            $table->string('yeutonguyhiem');
+            $table->string('mucdonghiemtrong');
+            $table->string('bienphapphongchong');
+            $table->string('bophanthuchien');
+            $table->string('thoigianthuchien');
             $table->timestamps();
         });
     }

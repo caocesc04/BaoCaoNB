@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Baocaophuluc01 extends Migration
+class UserDoanhnghiep extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Baocaophuluc01 extends Migration
      */
     public function up()
     {
-        Schema::create('baocaophuluc01', function (Blueprint $table) {
+        Schema::create('user_doanhnghiep', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_detail_dn');
-            $table->integer('id_kybaocao');
-            $table->integer('id_phuluc01');
-            $table->string('soluong');
+            $table->integer('id_user');
+            $table->integer('id_doanhnghiep');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class Baocaophuluc01 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baocaophuluc01');
+        Schema::dropIfExists('user_doanhnghiep');
     }
 }

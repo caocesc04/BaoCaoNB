@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DanhMucPhuLuc01;
+use App\DanhMucPhuLuc04;
 use App\NhomThuocTinh;
-use App\DoanhNghiep;
-use App\KyBaoCao;
-use App\BaoCaoPhuLuc01;
 use Illuminate\Support\Facades\DB;
 use Redirect;
 
-
-class BaoCaoPhuLuc01Controller extends Controller
+class DanhMucPhuLuc04Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,12 +17,11 @@ class BaoCaoPhuLuc01Controller extends Controller
      */
     public function index()
     {
-        $doanhnghiep = DoanhNghiep::all();
-        $kybaocao = KyBaoCao::all();
-        $pl01s = DanhMucPhuLuc01::with('nhomthuoctinh')->get();
-        $ntts = NhomThuocTinh::with('danhmucphuluc01')->where('tenphuluc', 'Phụ Lục 01')->get();
-        return view('home', compact('pl01s','ntts','doanhnghiep','kybaocao'));
+        $pl04s = DanhMucPhuLuc04::with('nhomthuoctinh')->get();
+        $ntts = NhomThuocTinh::with('danhmucphuluc04')->where('tenphuluc', 'Phụ Lục 04')->get();
+        return view('danhmucphuluc04', compact('ntts','pl04s'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,6 +31,7 @@ class BaoCaoPhuLuc01Controller extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,21 +40,18 @@ class BaoCaoPhuLuc01Controller extends Controller
      */
     public function store(Request $request)
     {
-        $doanhnghiep = DoanhNghiep::find($request->doanhnghiep);
-        $kybaocao = KyBaoCao::find($request->kybaocao);
-        $idphuluc01 = $request->idpl01;
-        $soluongs = $request->inputpl01;
-        foreach($soluongs as $key=>$soluong) {
-            $data = array(
-                'id_doanhnghiep' =>$doanhnghiep->id,
-                'id_kybaocao' =>$kybaocao->id,
-                'id_phuluc01' => $idphuluc01[$key],
-                'soluong' => $soluongs[$key],
-            );
-            BaoCaoPhuLuc01::create($data);
-        }
-        return Redirect::back()->with('success','Thêm báo cáo thành công!');
+        $this->validate(request(), [
+          'TenThuocTinh' => 'required',
+        ],[
+        'TenThuocTinh.required' => 'Chưa nhập tên thuộc tính',
+        ]);
+        $pl04 = new DanhMucPhuLuc04;
+        $pl04->tieuchithongke = $request->TenThuocTinh;
+        $pl04->id_nhom = $request->TenNhom;
+        $pl04->save();
+        return Redirect::back()->with('success','Thêm thành công!');
     }
+
     /**
      * Display the specified resource.
      *
@@ -69,6 +62,7 @@ class BaoCaoPhuLuc01Controller extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,6 +73,7 @@ class BaoCaoPhuLuc01Controller extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -90,6 +85,7 @@ class BaoCaoPhuLuc01Controller extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *

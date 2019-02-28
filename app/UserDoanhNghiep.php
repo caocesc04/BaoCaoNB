@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DetailDoanhNghiep extends Model
+class UserDoanhNghiep extends Model
 {
-    protected $table = "detail_doanhnghiep";
+    protected $table = "user_doanhnghiep";
     protected $primaryKey = 'id';
 
-    public function detaildn() {
-        return $this->belongsTo('App\DetailDN','id_detail','id');
-    }
     public function doanhnghiep() {
         return $this->belongsTo('App\DoanhNghiep','id_doanhnghiep','id');
+    }
+    public function user() {
+        return $this->belongsTo('App\User','id_user','id');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.DM_Phu_Luc_01.admin_design')
+@extends('layouts.DM_Phu_Luc_04.admin_design')
 
 @section('content')
      
@@ -21,16 +21,16 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="background-color: ">
-                        <h5 class="col-lg-10">Danh Mục Phụ Lục 01</h5>
+                        <h5 class="col-lg-10">Danh Mục Phụ Lục 04</h5>
                         <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal1">
-                            <i class="fa fa-paste"></i> Thêm Mới </button>
+                        <i class="fa fa-paste"></i> Thêm Mới </button>
                     </div>
                     <div class="ibox-content" >
                         <div class="tabs-container" style="background-color: #fff">
                             <ul class="nav nav-tabs col-lg-12">
-                                @foreach($ntts as $key=>$pl01)
-                                    <li class="col-lg-3 {{$key==0 ? 'active' : ''}}" style="height: 100px">
-                                        <a data-toggle="tab" href="#tab-{{$pl01->id}}">{{$pl01->tennhom}}</a>
+                                @foreach($ntts as $pl04)
+                                    <li class="col-lg-3" style="height: 100px">
+                                        <a data-toggle="tab" href="#tab-{{$pl04->id}}">{{$pl04->tennhom}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -44,24 +44,20 @@
                                                         <tr>
                                                             <th>Số thứ tự</th>
                                                             <th>Tiêu chí</th>
-                                                            <th>Đơn vị tính</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($pl01s as $pl01)
-                                                        @if($ntt->id == $pl01->id_nhom) 
-                                                        <tr class="item{{$pl01->id}}">
+                                                        @foreach($pl04s as $pl04)
+                                                        @if($ntt->id == $pl04->id_nhom) 
+                                                        <tr class="item{{$pl04->id}}">
                                                             <td></td>
                                                             <td>
-                                                                {{$pl01->tenthuoctinh}}
-                                                            </td>
-                                                            <td>
-                                                                {{$pl01->donvitinh}}
+                                                                {{$pl04->tieuchithongke}}
                                                             </td>
                                                             <td style='text-align: center;'>
-                                                                <button class="btn btn-outline btn-success  dim edit-modal" data-id="{{$pl01->id}}" data-noidung="{{$pl01->tenthuoctinh}}" data-donvitinh="{{$pl01->donvitinh}}" style=" padding: 1px 9px;"><i class="fa fa-paint-brush"></i>Edit</button> 
-                                                                <button class="btn btn-outline btn-danger  dim delete-modal" data-id="{{$pl01->id}}" data-noidung="{{$pl01->tenthuoctinh}}" type="submit" style=" padding: 1px 9px;"><i class="fa fa-trash"></i>Delete</button>
+                                                                <button class="btn btn-outline btn-success  dim edit-modal" data-id="{{$pl04->id}}" data-noidung="{{$pl04->tenthuoctinh}}" style=" padding: 1px 9px;"><i class="fa fa-paint-brush"></i>Edit</button> 
+                                                                <button class="btn btn-outline btn-danger  dim delete-modal" data-id="{{$pl04->id}}" data-noidung="{{$pl04->tenthuoctinh}}" type="submit" style=" padding: 1px 9px;"><i class="fa fa-trash"></i>Delete</button>
                                                             </td>
                                                         </tr>
                                                         @endif
@@ -79,7 +75,7 @@
             </div>
         </div>
     </div>
-    <form method="post" action="{{route('danhmucphuluc01.store')}}" enctype="multipart/form-data">{{csrf_field()}}
+    <form method="post" action="{{route('danhmucphuluc04.store')}}" enctype="multipart/form-data">{{csrf_field()}}
         <div class="modal inmodal fade" id="myModal1" tabindex="-1" role="dialog"  aria-hidden="true">
             <div class="modal-dialog modal-lg" style="width: 500px;margin: 30px auto;">
                 <div class="modal-content"style="border: 3px solid transparent;border-radius: 10px;    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);border-color: #1ab394;">
@@ -104,10 +100,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-xs-12" style="background-color: #fff !important;border:none">
-                                <b><p>Đơn Vị Tính</p></b>
-                                 <input style="border-radius: 5px; border: 1px solid #000;" type="text" class="form-control" name="DonViTinh" required="">
-                            </div> 
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -28,7 +28,7 @@
                             <li><a href="{{ url('/kybaocao') }} ">Danh Mục Kỳ Báo Cáo</a></li>
                             <li><a href="{{ url('/danhmucnhomthuoctinh') }} ">Danh Mục Nhóm Thuộc Tính</a></li>
                             <li><a href="{{ url('/danhmucphuluc01') }} ">Danh Mục Phụ Lục 01</a></li>
-                            <li><a href="#">Danh Mục Phụ Lục 04</a></li> 
+                            <li><a href="/danhmucphuluc04">Danh Mục Phụ Lục 04</a></li> 
                         </ul>
                     </li>
                     <li class="active">

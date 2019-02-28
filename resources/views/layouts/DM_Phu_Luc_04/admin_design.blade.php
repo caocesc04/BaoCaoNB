@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Báo Cáo NB</title>
+    <title>Danh Mục Phụ Lục 01</title>
 
     <link href=" {{ asset ('inspinia/css/bootstrap.min.css') }} " rel="stylesheet">
     <link href="{{ asset ('inspinia/font-awesome/css/font-awesome.css ') }} " rel="stylesheet">
@@ -21,12 +21,14 @@
 <body  >
 
    <div id="wrapper">
-        @include('layouts.NBCPL01.admin_siderbar')
+        @include('layouts.DM_Phu_Luc_04.admin_siderbar')
 
         <div id="page-wrapper" class="gray-bg">
-            @include('layouts.NBCPL01.admin_header')
+            @include('layouts.H&FLayout.admin_header')
+             <main class="py-4">
             @yield('content')
-            @include('layouts.NBCPL01.admin_footer')
+            </main>
+            @include('layouts.H&FLayout.admin_footer')
         </div> 
     </div>
 
@@ -51,8 +53,9 @@
     <script src=" {{ asset('inspinia/js/plugins/validate/jquery.validate.min.js') }}  "></script>
     <script src=" {{ asset('inspinia/js/plugins/jquery-ui/jquery-ui.min.js ') }}  "></script>
 
-   <script src=" {{ asset(' inspinia/js/plugins/datapicker/bootstrap-datepicker.js ') }}  "></script>
+    <script src="{{ asset('inspinia/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
 
+     
 
     <script>
         $(document).ready(function(){
@@ -146,9 +149,6 @@
                 calendarWeeks: true,
                 autoclose: true,
                 format:"dd-mm-yyyy"
-            });
-            $(".h1 #show").text(function(index, currentText) {
-                return currentText.substr(0, 20) + '...';
             });
        });
     </script>
